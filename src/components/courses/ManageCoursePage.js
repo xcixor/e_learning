@@ -26,8 +26,8 @@ function ManageCoursePage({
 			loadCourses().catch((error) => {
 				alert("Loading courses failed" + error);
 			});
-		}else {
-			setCourse({...props.course});
+		} else {
+			setCourse({ ...props.course });
 		}
 
 		if (authors.length === 0) {
@@ -48,10 +48,15 @@ function ManageCoursePage({
 	function handleSave(event) {
 		event.preventDefault();
 		setSaving(true);
-		saveCourse(course).then(() => {
-			toast.success("Course saved");
-			history.push("/courses");
-		});
+		saveCourse(course)
+			.then(() => {
+				toast.success("Course saved");
+				history.push("/courses");
+			})
+			.catch((error) => {
+				setSaving(false);
+				setErrors({ onSave: error.message });
+			});
 	}
 
 	return authors.length === 0 || courses.length === 0 ? (

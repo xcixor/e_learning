@@ -1,5 +1,5 @@
 {
-	"name": "PES Academy",
+	"name": "pes_academy",
 	"description": "",
 	"scripts": {
 		"start": "run-p start:dev start:api",

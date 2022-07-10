@@ -8,7 +8,7 @@ import { newCourse } from "../../../tools/mockData";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
-function ManageCoursePage({
+export function ManageCoursePage({
 	courses,
 	authors,
 	loadAuthors,
@@ -60,7 +60,7 @@ function ManageCoursePage({
 
 	function handleSave(event) {
 		event.preventDefault();
-    if (!formIsValid()) return;
+		if (!formIsValid()) return;
 		setSaving(true);
 		saveCourse(course)
 			.then(() => {

@@ -54,6 +54,16 @@ server.post("/courses/", function (req, res, next) {
 	}
 });
 
+server.post("/chapters/", function (req, res, next) {
+	const error = validateCourseChapter(req.body);
+	if (error) {
+		res.status(400).send(error);
+	} else {
+		req.body.slug = createSlug(req.body.title); // Generate a slug for new courses.
+		next();
+	}
+});
+
 // Use default router
 server.use(router);
 
@@ -77,5 +87,12 @@ function validateCourse(course) {
 	if (!course.title) return "Title is required.";
 	if (!course.authorId) return "Author is required.";
 	if (!course.category) return "Category is required.";
+	return "";
+}
+
+function validateCourseChapter(chapter) {
+	if (!chapter.title) return "Title is required.";
+	if (!chapter.courseId) return "Course is required is required.";
+	if (!chapter.chapterNumber) return "Chapter number is required.";
 	return "";
 }

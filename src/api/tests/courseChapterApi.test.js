@@ -8,12 +8,15 @@ describe("courseChapterApi calls", () => {
 	});
 
 	describe("It should load a course chapters", () => {
+		const courseId = 1;
+		const courseChapters = chapters.filter((x) => x.courseId === courseId);
 		it("#getCourseChapters() returns an array of chapters", () => {
 			fetchMock.mock("*", {
-				body: chapters,
+				body: courseChapters,
 				headers: { "content-type": "application/json" },
 			});
-			return courseChapterApi.getCourseChapters(1).then((data) => {
+			return courseChapterApi.getCourseChapters(courseId).then((data) => {
+				console.log(data);
 				expect(data).toBeDefined();
 				expect(data.length).toBeGreaterThan(1);
 				expect(data[0].title).toEqual("Course Overview");

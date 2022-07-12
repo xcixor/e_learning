@@ -37,7 +37,7 @@ export function CourseDetailPage({
 			<CourseSummary course={course} author={author} />
 		</div>
 	);
-};
+}
 
 export function getCourseBySlug(courses, slug) {
 	return courses.find((course) => course.slug === slug) || null;

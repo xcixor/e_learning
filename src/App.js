@@ -5,7 +5,7 @@ import AboutPage from "./components/about/AboutPage";
 import Header from "./components/common/Header";
 import PageNotFound from "./components/PageNotFound";
 import CoursesPage from "./components/courses/CoursesPage";
-import CourseDetailPage from "./pages/CourseDetailPage";
+import CourseDetailPage from "./pages/CourseDetailPage"; //eslint-disable-line import/no-named-as-default
 import ManageCoursePage from "./components/courses/ManageCoursePage"; //eslint-disable-line import/no-named-as-default
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
